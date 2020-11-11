@@ -17,8 +17,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-//        User::truncate();
-//        DB::table('role_user')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        User::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $managerRole = Role::where('name', 'manager')-> first()->id;
         $clientRole = Role::where('name', 'client')-> first()->id;
@@ -26,30 +27,37 @@ class UsersTableSeeder extends Seeder
         $repairmanRole = Role::where('name', 'repairman')-> first()->id;
 
 
-        $manager = User::create([
+        User::create([
             'name' => 'Manager user',
             'email' => 'manager@manager.com',
             'password' => Hash::make('password'),
             'role_id' => $managerRole
         ]);
 
-        $client = User::create([
+        User::create([
             'name' => 'Client user',
             'email' => 'client@client.com',
             'password' => Hash::make('password'),
             'role_id' => $clientRole
         ]);
 
-        $recipient = User::create([
+        User::create([
             'name' => 'Recipient user',
             'email' => 'recipient@recipient.com',
             'password' => Hash::make('password'),
             'role_id' => $recipientRole
         ]);
 
-        $repairman = User::create([
+        User::create([
             'name' => 'Repairman user',
             'email' => 'repairman@repairman.com',
+            'password' => Hash::make('password'),
+            'role_id' => $repairmanRole
+        ]);
+
+        User::create([
+            'name' => 'Repairman 2 user',
+            'email' => 'repairman2@repairman.com',
             'password' => Hash::make('password'),
             'role_id' => $repairmanRole
         ]);
