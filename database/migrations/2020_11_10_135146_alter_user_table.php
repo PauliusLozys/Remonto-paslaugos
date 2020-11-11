@@ -36,7 +36,7 @@ class AlterUserTable extends Migration
     {
         Schema::table('users', function ($table) {
             $table->dropForeign('users_role_id_foreign');
-            $table->dropColumm('role_id');
+            $table->dropColumn('role_id');
         });
     }
 }
