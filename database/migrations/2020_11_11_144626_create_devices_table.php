@@ -15,6 +15,7 @@ class CreateDevicesTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
+            $table->string('public_access');
             $table->boolean('is_repaired');
             $table->boolean('is_withdrawn');
             $table->bigInteger('repairman_id')->unsigned()->nullable();
