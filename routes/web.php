@@ -27,3 +27,5 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:user
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 
 });
+
+Route::resource('/device', 'DevicesController');

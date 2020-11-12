@@ -9,4 +9,8 @@ class Device extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function repairman() {
+        return $this->belongsTo('App\Models\User', 'repairman_id');
+    }
 }
