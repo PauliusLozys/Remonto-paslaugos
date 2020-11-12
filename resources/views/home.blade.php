@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('navigation-bar')
+    <a href="{{ route('device.create')}}" ><button type="button" class="navButtons">Užregistruoti įtaisą</button></a>
+    <a href="{{ route('device.index')}}" ><button type="button" class="navButtons">Peržiūreti įtaisus</button></a>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

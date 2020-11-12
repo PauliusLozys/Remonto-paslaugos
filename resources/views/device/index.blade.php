@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navigation-bar')
+    <a href="{{ route('home')}}"><button type="button"class="navButtons" >Atgal</button></a>
+@endsection
+
 @section('content')
 
 <div class="container">

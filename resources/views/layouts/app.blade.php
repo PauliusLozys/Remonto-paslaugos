@@ -21,15 +21,23 @@
 
     <style>
         .navButtons {
-            margin: 1px;
+            margin: 2px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .navButtons:hover {
+            background-color: rgba(77, 124, 163, 0.8);
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background: linear-gradient(326deg, rgba(34,195,192,1) 9%, rgba(34,64,195,1) 33%, rgba(4,3,0,1) 100%); ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white">
                     {{ config('app.name', 'Remonto paslaugos') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,11 +47,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
-                        <a href="{{ route('device.create')}}" class="navButtons"><button type="button" class="btn btn-info">Užregistruoti įtaisą</button></a>
-                        <a href="{{ route('device.index')}}" class="navButtons"><button type="button" class="btn btn-info">Peržiūreti įtaisus</button></a>
-
-
+                        @yield('navigation-bar')
                     </ul>
 
                     <!-- Right Side Of Navbar -->
