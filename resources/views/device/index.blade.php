@@ -21,7 +21,9 @@
                             <th scope="col">Ar sutvarkytas</th>
                             <th scope="col">Ar atsiimtas</th>
                             <th scope="col">Remontininkas</th>
-                            <th scope="col">Veiksmai</th>
+                            @can('user-repairman')
+                                <th scope="col">Veiksmai</th>
+                            @endcan
                         </tr>
                         </thead>
                         <tbody>
@@ -33,16 +35,17 @@
                                 <td>{{ $device->is_withdrawn ? 'Taip' : 'Ne'}}</td>
                                 <td>{{ $device->repairman->name ?? 'Nepriskirtas' }}</td>
                                 <td>
-                                    TODO: buttons
-                                    {{-- <a href="{{ route('admin.users.edit', $user->id) }}">
-                                        <button type="button" class="btn btn-primary">Redaguoti</button>
-                                    </a>
-
-                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="float-left">
+     
+                                @if($device->repairman_id == null)
+                                    @can('user-repairman')
+                                    <form action="{{ route('device.update', $device->id) }}" method="POST" class="float-left">
                                         @csrf
-                                        {{method_field('DELETE')}}
-                                        <button type="submit" class="btn btn-warning">�alinti</button>
-                                    </form> --}}
+                                        {{method_field('PUT')}}
+                                        <button type="submit" class="btn btn-primary">Atsižymėti</button>
+                                    </form>
+                                    @endcan
+                                @endif
+                                    
                                 </td>
 
                             </tr>

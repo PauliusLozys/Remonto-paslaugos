@@ -28,4 +28,5 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:user
 
 });
 
+Route::get('device/unrepaired','DevicesController@notRepaired' )->middleware('can:user-repairman')->name('device.notRepaired');
 Route::resource('/device', 'DevicesController');

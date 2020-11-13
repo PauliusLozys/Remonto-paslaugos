@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Device;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class DevicesController extends Controller
 {
@@ -17,6 +19,12 @@ class DevicesController extends Controller
     public function index()
     {
         $allDevices = Device::all();
+        return view('device.index')->with('devices', $allDevices);
+    }
+
+    public function notRepaired()
+    {
+        $allDevices = Device::all()->whereNull('repairman_id');
         return view('device.index')->with('devices', $allDevices);
     }
 
@@ -66,7 +74,7 @@ class DevicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'edit page';
     }
 
     /**
@@ -78,7 +86,12 @@ class DevicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $device = Device::findOrFail($id);
+
+        $device->repairman_id = Auth::id();
+        $device->save();
+
+        return Redirect()->route('device.notRepaired');
     }
 
     /**
