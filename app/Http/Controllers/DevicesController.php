@@ -37,11 +37,33 @@ class DevicesController extends Controller
     public function findDevice(Request $request) {
         $device = Device::all()->where('public_access', $request->searchBar)->first();
         $foundDevice = false;
-        //  dd($device);
         return view('device.find')->with([
             'device' => $device,
             'foundDevice' => $foundDevice
         ]);
+    }
+
+    public function search() {
+        return view('device.search');
+    }
+
+    public function searchDevice(Request $request) {
+        $device = Device::all()->where('public_access', $request->searchBar)->first();
+        $foundDevice = false;
+        return view('device.search')->with([
+            'device' => $device,
+            'foundDevice' => $foundDevice
+        ]);
+    }
+
+
+    public function searchUpdate($id) {
+
+        $device = Device::findOrFail($id);
+        $device->is_withdrawn = true;
+        $device->save();
+
+        return Redirect()->route('home');
     }
 
     /**
@@ -82,6 +104,7 @@ class DevicesController extends Controller
         //dd($id);
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -105,6 +128,7 @@ class DevicesController extends Controller
         $device = Device::findOrFail($id);
 
         $device->repairman_id = Auth::id();
+        $device->is_repaired = true;
         $device->save();
 
         return Redirect()->route('device.notRepaired');

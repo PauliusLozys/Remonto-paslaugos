@@ -29,6 +29,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:user
 });
 
 Route::get('device/unrepaired','DevicesController@notRepaired' )->middleware('can:user-repairman')->name('device.notRepaired');
+
+Route::get('device/search','DevicesController@search' )->name('device.search');
+Route::post('device/searc','DevicesController@searchDevice' )->name('device.searchDevice');
+Route::post('device/search/{id}','DevicesController@searchUpdate' )->name('device.searchUpdate');
+
 Route::get('device/find','DevicesController@indexFind' )->name('device.find');
 Route::post('device/find','DevicesController@findDevice' )->name('device.findDevice');
 Route::resource('/device', 'DevicesController');

@@ -13,7 +13,7 @@
 
             <form action="{{ route('device.findDevice') }}" method="POST">
                 @csrf
-                <input type="text" name="searchBar">
+                <p>Prieigos kodas:  <input type="text" name="searchBar"></p>
                 <button type="submit" class="btn btn-primary">
                     Ieškoti
                 </button>
