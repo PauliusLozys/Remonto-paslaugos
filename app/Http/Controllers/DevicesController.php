@@ -22,10 +22,26 @@ class DevicesController extends Controller
         return view('device.index')->with('devices', $allDevices);
     }
 
+    // Retrieves a window for reparimen of devices that are not yet assigned to anyone
     public function notRepaired()
     {
         $allDevices = Device::all()->whereNull('repairman_id');
         return view('device.index')->with('devices', $allDevices);
+    }
+
+    // Retrieves the window where a client can look up if his device is repaired or not.
+    public function indexFind() {
+        return view('device.find');
+    }
+
+    public function findDevice(Request $request) {
+        $device = Device::all()->where('public_access', $request->searchBar)->first();
+        $foundDevice = false;
+        //  dd($device);
+        return view('device.find')->with([
+            'device' => $device,
+            'foundDevice' => $foundDevice
+        ]);
     }
 
     /**
@@ -63,7 +79,7 @@ class DevicesController extends Controller
      */
     public function show($id)
     {
-        //
+        //dd($id);
     }
 
     /**
