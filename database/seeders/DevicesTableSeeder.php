@@ -23,6 +23,7 @@ class DevicesTableSeeder extends Seeder
         Device::create([
             'is_repaired' => false,
             'is_withdrawn' => false,
+            'repairman_id' => 5,
             'public_access' => substr(Hash::make(rand()), 7, 6)
         ]);
 

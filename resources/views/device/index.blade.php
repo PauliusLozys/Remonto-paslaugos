@@ -21,9 +21,6 @@
                             <th scope="col">Ar sutvarkytas</th>
                             <th scope="col">Ar atsiimtas</th>
                             <th scope="col">Remontininkas</th>
-                            @can('user-repairman')
-                                <th scope="col">Veiksmai</th>
-                            @endcan
                         </tr>
                         </thead>
                         <tbody>
@@ -34,20 +31,6 @@
                                 <td>{{ $device->is_repaired ? 'Taip' : 'Ne'}}</td>
                                 <td>{{ $device->is_withdrawn ? 'Taip' : 'Ne'}}</td>
                                 <td>{{ $device->repairman->name ?? 'Nepriskirtas' }}</td>
-                                <td>
-     
-                                @if($device->repairman_id == null)
-                                    @can('user-repairman')
-                                    <form action="{{ route('device.update', $device->id) }}" method="POST" class="float-left">
-                                        @csrf
-                                        {{method_field('PUT')}}
-                                        <button type="submit" class="btn btn-primary">Atsižymėti</button>
-                                    </form>
-                                    @endcan
-                                @endif
-                                    
-                                </td>
-
                             </tr>
                         @endforeach
                         </tbody>

@@ -26,8 +26,18 @@ class DevicesController extends Controller
     public function notRepaired()
     {
         $allDevices = Device::all()->whereNull('repairman_id');
-        return view('device.index')->with('devices', $allDevices);
+        return view('device.unrepaired')->with('devices', $allDevices);
     }
+
+     public function searchNotRepaired(Request $request)
+     {
+        $Device = Device::all()->where('public_access', $request->searchBar);
+        $foundDevice = false;
+        return view('device.unrepaired')->with([
+            'devices' => $Device,
+            'foundDevice' => $foundDevice
+        ]);
+     }
 
     // Retrieves the window where a client can look up if his device is repaired or not.
     public function indexFind() {
