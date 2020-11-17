@@ -77,10 +77,12 @@
                                                      document.getElementById('logout-form').submit();">
                                         Atsijungti
                                     </a>
-
-                                    <a class="dropdown-item" href="{{ route('admin.users.index') }}">
-                                        Vartotoju valdymas
-                                    </a>
+                                    
+                                    @can('user-manager')
+                                        <a class="dropdown-item" href="{{ route('admin.users.index') }}">
+                                            Vartotoju valdymas
+                                        </a>
+                                    @endcan
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

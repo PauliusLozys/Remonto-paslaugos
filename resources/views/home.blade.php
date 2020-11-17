@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
 @section('navigation-bar')
-    <a href="{{ route('device.create')}}" ><button type="button" class="navButtons">Užregistruoti įtaisą</button></a>
-    <a href="{{ route('device.search')}}" ><button type="button" class="navButtons">Atžymėti įtaisą</button></a>
-    <a href="{{ route('device.index')}}" ><button type="button" class="navButtons">Peržiūreti įtaisus</button></a>
+    
+    @can('user-recipient')
+        <a href="{{ route('device.create')}}" ><button type="button" class="navButtons">Užregistruoti įtaisą</button></a>
+        <a href="{{ route('device.search')}}" ><button type="button" class="navButtons">Atžymėti įtaisą</button></a>
+    @endcan
+
+    @can('user-manager')
+        <a href="{{ route('device.index')}}" ><button type="button" class="navButtons">Peržiūreti įtaisus</button></a>
+        <a href="{{ route('device.statistics')}}" ><button type="button" class="navButtons">Statistika</button></a>
+    @endcan
+
     @can('user-repairman')
         <a href="{{ route('device.notRepaired')}}" ><button type="button" class="navButtons">Peržiūreti nesutaisytus įtaisus</button></a>
     @endcan

@@ -76,6 +76,29 @@ class DevicesController extends Controller
         return Redirect()->route('home');
     }
 
+    public function statistics() {
+
+        $devices = Device::all();
+
+        $allDevices = $devices->count();
+        $unrepairedDevices = $devices->where('is_repaired', 0)->count();
+        $repairedDevices = $devices->where('is_repaired', 1)->count();
+        $notWithdrawn = $devices->where('is_withdrawn', 0)->count();
+        $isWithdrawn = $devices->where('is_withdrawn', 1)->count();
+
+        // ! FIX ME: not liking this being a hard coded value, maybe some dynamic set would be better
+        $repairmen = User::all()->where('role_id', 4);
+        $repairmen_data = array();
+
+        foreach($repairmen as $repairman) {
+            $count = $devices->where('repairman_id', $repairman->id)->count();
+            $repairmen_data[] = [$repairman, $count];
+        }
+
+
+        return view('device.statistics', compact('allDevices','unrepairedDevices','repairedDevices', 'notWithdrawn', 'isWithdrawn', 'repairmen_data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
