@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $managerRole = Role::where('name', 'manager')-> first()->id;
-        $clientRole = Role::where('name', 'client')-> first()->id;
+        $unregisteredRole = Role::where('name', 'unregistered')-> first()->id;
         $recipientRole = Role::where('name', 'recipient')-> first()->id;
         $repairmanRole = Role::where('name', 'repairman')-> first()->id;
 
@@ -35,10 +35,10 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Client user',
-            'email' => 'client@client.com',
+            'name' => 'Naudotojas user',
+            'email' => 'naud@naud.com',
             'password' => Hash::make('password'),
-            'role_id' => $clientRole
+            'role_id' => $unregisteredRole
         ]);
 
         User::create([

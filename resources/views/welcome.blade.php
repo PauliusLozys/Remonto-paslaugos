@@ -61,6 +61,9 @@
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                    <h1>REMONTO PASLAUGOS™</h1>
                 </div>
+                <center>
+                    <h3 style="color: white">IFF-8/13 Paulius Ložys</h3>
+                </center>
                 <div>
                     <center>
                         <a href="{{ route('device.find') }}" ><button type="button">Peržiūrėti įtaiso statusą</button></a>
