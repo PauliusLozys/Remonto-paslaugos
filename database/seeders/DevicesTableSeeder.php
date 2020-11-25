@@ -21,7 +21,7 @@ class DevicesTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         Device::create([
-            'is_repaired' => false,
+            'is_repaired' => true,
             'is_withdrawn' => false,
             'repairman_id' => 5,
             'public_access' => substr(Hash::make(rand()), 7, 6)
