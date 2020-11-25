@@ -99,6 +99,28 @@ class DevicesController extends Controller
         return view('device.statistics', compact('allDevices','unrepairedDevices','repairedDevices', 'notWithdrawn', 'isWithdrawn', 'repairmen_data'));
     }
 
+    public function showUnrepaired() {
+        $data = Device::all()->where('is_repaired', 0);
+        $tableName = 'Nesutvarkyti įtaisai';
+        return view('device.filteredStatistic', compact('data', 'tableName'));
+    }
+
+    public function showRepaired() {
+        $data = Device::all()->where('is_repaired', 1);
+        $tableName = 'Sutvarkyti įtaisai';
+        return view('device.filteredStatistic', compact('data', 'tableName'));
+    }
+
+    public function showWithdrawn() {
+        $data = Device::all()->where('is_withdrawn', 1);
+        $tableName = 'Atsiimti įtaisai';
+        return view('device.filteredStatistic', compact('data', 'tableName'));
+    }
+    public function showNotWithdrawn() {
+        $data = Device::all()->where('is_withdrawn', 0);
+        $tableName = 'Neatsiimti įtaisai';
+        return view('device.filteredStatistic', compact('data', 'tableName'));
+    }
     /**
      * Show the form for creating a new resource.
      *

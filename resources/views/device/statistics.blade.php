@@ -13,11 +13,11 @@
                 <div class="card-header">Statistika</div>
                 <div class="card-body">
 
-                    <h3>Visi įtaisiai: {{ $allDevices }}</h3>
-                    <h3>Nesutvarkyti įtaisiai: {{ $unrepairedDevices }}</h3>
-                    <h3>Sutvarkyti įtaisiai: {{ $repairedDevices }}</h3>
-                    <h3>Atsiimti įtaisiai: {{ $isWithdrawn }}</h3>
-                    <h3>Neatsiimti įtaisiai: {{ $notWithdrawn }}</h3>
+                    <h3><a href="{{ route('device.index') }}">Visi įtaisiai: </a>{{ $allDevices }}</h3>
+                    <h3><a href="{{ route('device.statisticsUnRepaired') }}">Nesutvarkyti įtaisiai: </a>{{ $unrepairedDevices }}</h3>
+                    <h3><a href="{{ route('device.statisticsRepaired') }}">Sutvarkyti įtaisiai: </a>{{ $repairedDevices }}</h3>
+                    <h3><a href="{{ route('device.statisticsWithdrawn') }}">Atsiimti įtaisiai: </a>{{ $isWithdrawn }}</h3>
+                    <h3><a href="{{ route('device.statisticsNotWithdrawn') }}">Neatsiimti įtaisiai: </a>{{ $notWithdrawn }}</h3>
                     <br><br>
 
                     <h3><b>Remontininkų statistika</b></h3>

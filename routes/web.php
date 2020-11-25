@@ -36,6 +36,10 @@ Route::post('device/searc','DevicesController@searchDevice' )->name('device.sear
 Route::post('device/search/{id}','DevicesController@searchUpdate' )->name('device.searchUpdate');
 
 Route::get('device/statistics','DevicesController@statistics' )->middleware('can:user-manager')->name('device.statistics');
+Route::get('device/statistics/unrepaired','DevicesController@showUnrepaired' )->middleware('can:user-manager')->name('device.statisticsUnRepaired');
+Route::get('device/statistics/repaired','DevicesController@showRepaired' )->middleware('can:user-manager')->name('device.statisticsRepaired');
+Route::get('device/statistics/withdrawn','DevicesController@showWithdrawn' )->middleware('can:user-manager')->name('device.statisticsWithdrawn');
+Route::get('device/statistics/notWithdrawn','DevicesController@showNotWithdrawn' )->middleware('can:user-manager')->name('device.statisticsNotWithdrawn');
 
 Route::get('device/find','DevicesController@indexFind' )->name('device.find');
 Route::post('device/find','DevicesController@findDevice' )->name('device.findDevice');
