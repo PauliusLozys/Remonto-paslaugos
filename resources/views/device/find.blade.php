@@ -7,16 +7,27 @@
     <title>Ieškoti įtaiso</title>
 </head>
 <body>
+
     <div>
         <center>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <h1>Ieškoti įtaiso</h1>
 
             <form action="{{ route('device.findDevice') }}" method="POST">
                 @csrf
-                <p>Prieigos kodas:  <input type="text" name="searchBar"></p>
+                <p>Prieigos kodas:  <input type="text" name="searchBar" id="searchBar"></p>
                 <button type="submit" class="btn btn-primary">
                     Ieškoti
                 </button>
+                <a href="{{ url('/')}}"><button type="button"class="navButtons" >Atgal</button></a>
             </form>
 
             @isset($foundDevice)

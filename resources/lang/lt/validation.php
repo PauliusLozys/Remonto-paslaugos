@@ -141,5 +141,7 @@ return [
     |
     */
     'attributes'           => [
+        'searchBar' => 'prieigos kodas',
+        'name' => 'vardas'
     ],
 ];

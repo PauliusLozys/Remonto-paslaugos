@@ -31,6 +31,10 @@ class DevicesController extends Controller
 
      public function searchNotRepaired(Request $request)
      {
+        $data  = $request->validate([
+            'searchBar' => 'required'
+        ]);
+
         $Device = Device::all()->where('public_access', $request->searchBar);
         $foundDevice = false;
         return view('device.unrepaired')->with([
@@ -45,6 +49,10 @@ class DevicesController extends Controller
     }
 
     public function findDevice(Request $request) {
+        $data  = $request->validate([
+            'searchBar' => 'required'
+        ]);
+
         $device = Device::all()->where('public_access', $request->searchBar)->first();
         $foundDevice = false;
         return view('device.find')->with([
@@ -58,6 +66,9 @@ class DevicesController extends Controller
     }
 
     public function searchDevice(Request $request) {
+        $data  = $request->validate([
+            'searchBar' => 'required'
+        ]);
         $device = Device::all()->where('public_access', $request->searchBar)->first();
         $foundDevice = false;
         return view('device.search')->with([

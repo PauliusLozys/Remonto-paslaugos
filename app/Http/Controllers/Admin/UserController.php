@@ -83,6 +83,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $request -> validate([
+            'email' => 'required|email',
+            'name' => 'required'
+        ]);
         $user->role_id = $request->role;
         $user->name = $request->name;
         $user->email = $request->email;
