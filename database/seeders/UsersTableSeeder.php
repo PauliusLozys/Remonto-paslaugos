@@ -21,10 +21,10 @@ class UsersTableSeeder extends Seeder
         User::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $managerRole = Role::where('name', 'manager')-> first()->id;
-        $unregisteredRole = Role::where('name', 'unregistered')-> first()->id;
-        $recipientRole = Role::where('name', 'recipient')-> first()->id;
-        $repairmanRole = Role::where('name', 'repairman')-> first()->id;
+        $managerRole = Role::where('name', 'vadybininkas')-> first()->id;
+        $unregisteredRole = Role::where('name', 'neregistruotas')-> first()->id;
+        $recipientRole = Role::where('name', 'priėmėjas')-> first()->id;
+        $repairmanRole = Role::where('name', 'remontininkas')-> first()->id;
 
 
         User::create([

@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $unregisteredRole = Role::where('name', 'unregistered')-> first()->id;
+        $unregisteredRole = Role::where('name', 'neregistruotas')-> first()->id;
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
